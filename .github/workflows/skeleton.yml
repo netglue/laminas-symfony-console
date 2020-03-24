@@ -28,4 +28,4 @@ jobs:
           composer create-project --no-interaction mezzio/mezzio-skeleton app
           cd app
           composer require --no-interaction netglue/laminas-symfony-console "dev-master"
-          php vendor/bin/cli
+          vendor/bin/cli
