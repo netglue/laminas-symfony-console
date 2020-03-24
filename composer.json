@@ -39,7 +39,7 @@
     },
     "extra": {
         "laminas": {
-            "component": "Netglue\\Console\\ConfigProvider"
+            "config-provider": "Netglue\\Console\\ConfigProvider"
         }
     },
     "scripts": {
