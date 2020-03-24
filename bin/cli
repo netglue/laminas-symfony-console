@@ -5,11 +5,13 @@ declare(strict_types=1);
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\Application;
 
-for ($i = 1; $i <= 4; $i++) {
-    if (dirname(__DIR__, $i) === 'vendor') {
+for ($i = 1; $i <= 3; $i++) {
+    if (preg_match('~/vendor$~', dirname(__DIR__, $i))) {
         $root = dirname(__DIR__, $i + 1);
     }
 }
+
+require sprintf('%s/vendor/autoload.php', $root);
 
 if (! isset($root)) {
     echo <<<EOF
@@ -33,6 +35,15 @@ if (! file_exists($containerPath)) {
 
 $container = require $containerPath;
 assert($container instanceof ContainerInterface);
+
+if (! $container->has(Application::class)) {
+    echo <<<EOF
+    💣 The CLI application is not available in the container.
+    The config provider for this module will need to be injected in your local configuration.
+    
+    EOF;
+    exit(255);
+}
 
 $app = $container->get(Application::class);
 $app->run();
