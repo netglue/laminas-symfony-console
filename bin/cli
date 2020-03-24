@@ -1,0 +1,38 @@
+#!/usr/bin/env/php
+<?php
+declare(strict_types=1);
+
+use Psr\Container\ContainerInterface;
+use Symfony\Component\Console\Application;
+
+for ($i = 1; $i <= 4; $i++) {
+    if (dirname(__DIR__, $i) === 'vendor') {
+        $root = dirname(__DIR__, $i + 1);
+    }
+}
+
+if (! isset($root)) {
+    echo <<<EOF
+    💣 I can’t figure out the root directory in order to scan for the container bootstrap.
+    Have composer dependencies been installed?
+    
+    EOF;
+    exit(255);
+}
+
+$containerPath = sprintf('%s/config/container.php', $root);
+
+if (! file_exists($containerPath)) {
+    printf(<<<EOF
+    💣 I can’t find container.php. I’m looking for it here:
+    %s
+    
+    EOF, $containerPath);
+    exit(255);
+}
+
+$container = require $containerPath;
+assert($container instanceof ContainerInterface);
+
+$app = $container->get(Application::class);
+$app->run();

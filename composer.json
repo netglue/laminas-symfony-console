@@ -1,0 +1,55 @@
+{
+    "name": "netglue/laminas-symfony-console",
+    "description": "Opinionated Laminas and Symfony console integration",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "George Steel",
+            "email": "george@netglue.uk"
+        }
+    ],
+    "config": {
+        "sort-packages": true
+    },
+    "bin":[
+        "bin/cli"
+    ],
+    "require": {
+        "php": ">=7.3",
+        "psr/container": "^1.0",
+        "symfony/console": "^5"
+    },
+    "require-dev": {
+        "doctrine/coding-standard": "^7.0",
+        "laminas/laminas-component-installer": "^2.1",
+        "laminas/laminas-servicemanager": "^3.4",
+        "phpunit/phpunit": "^9.0",
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Netglue\\Console\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Netglue\\ConsoleTest\\": "tests"
+        }
+    },
+    "extra": {
+        "laminas": {
+            "component": "Netglue\\Console\\ConfigProvider"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@test"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-html build/report"
+    }
+}
