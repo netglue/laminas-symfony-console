@@ -22,7 +22,7 @@ jobs:
         with:
           php-version: ${{ matrix.php-versions }}
       - name: Composer self-update
-        run: composer self-update
+        run: sudo composer self-update
       - name: Install Skeleton
         run: |
           composer create-project --no-interaction mezzio/mezzio-skeleton app
