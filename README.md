@@ -7,7 +7,11 @@
 
 This very small component provides a couple of PSR-11 factories and opinionated configuration to get Symfony’s CLI tooling bootstrapped quickly in a Mezzio application _(It might also play nice with Laminas MVC but I don’t really use that anymore…)_.
 
-It assumes that you'll probably be using a PSR-11 compatible container and that you will want to use that container to lazy load your console commands.
+At the time of writing, I was unaware of [laminas/laminas-cli](https://github.com/laminas/laminas-cli) which does all the things this lib does and more.
+
+**Once laminas-cli is released, I will likely kill this lib off,** so you should probably just go and check out [the official Laminas component](https://github.com/laminas/laminas-cli)
+
+Anyhow, this lib assumes that you'll probably be using a PSR-11 compatible container and that you will want to use that container to lazy load your console commands.
 
 ### Installation
 
