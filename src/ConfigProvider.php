@@ -14,6 +14,9 @@ class ConfigProvider
         return [
             'console' => $this->consoleConfig(),
             'dependencies' => $this->dependencies(),
+            'laminas-cli' => [
+                'commands' => $this->commands(),
+            ],
         ];
     }
 
@@ -37,7 +40,13 @@ class ConfigProvider
         return [
             'name' => 'Application Console',
             'auto_add_invokable_factory' => false,
-            'commands' => [],
+            'commands' => $this->commands(),
         ];
+    }
+
+    /** @return string[] */
+    private function commands() : array
+    {
+        return [];
     }
 }

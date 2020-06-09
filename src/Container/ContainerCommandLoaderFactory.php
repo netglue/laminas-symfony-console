@@ -8,6 +8,7 @@ use Laminas\ServiceManager\ServiceManager;
 use Psr\Container\ContainerInterface;
 use Symfony\Component\Console\CommandLoader\ContainerCommandLoader;
 use Traversable;
+use function array_merge;
 use function assert;
 use function is_array;
 
@@ -17,7 +18,10 @@ class ContainerCommandLoaderFactory
     {
         $config = $container->has('config') ? $container->get('config') : [];
         assert(is_array($config) || $config instanceof Traversable);
-        $commands = $config['console']['commands'] ?? [];
+        $commands = array_merge(
+            $config['console']['commands'] ?? [],
+            $config['laminas-cli']['commands'] ?? []
+        );
 
         $autoAddInvokableFactory = $config['console']['auto_add_invokable_factory'] ?? false;
         if ($autoAddInvokableFactory) {
