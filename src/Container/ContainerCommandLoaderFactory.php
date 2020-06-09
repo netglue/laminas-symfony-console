@@ -17,7 +17,10 @@ class ContainerCommandLoaderFactory
     {
         $config = $container->has('config') ? $container->get('config') : [];
         assert(is_array($config) || $config instanceof Traversable);
-        $commands = $config['console']['commands'] ?? [];
+        $commands = array_merge(
+            $config['console']['commands'] ?? [],
+            $config['laminas-cli']['commands'] ?? []
+        );
 
         $autoAddInvokableFactory = $config['console']['auto_add_invokable_factory'] ?? false;
         if ($autoAddInvokableFactory) {
