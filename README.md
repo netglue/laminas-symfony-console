@@ -3,6 +3,10 @@
 ![PHPUnit Test Suite](https://github.com/netglue/laminas-symfony-console/workflows/PHPUnit%20Test%20Suite/badge.svg)
 [![codecov](https://codecov.io/gh/netglue/laminas-symfony-console/branch/master/graph/badge.svg)](https://codecov.io/gh/netglue/laminas-symfony-console)
 
+## Project Abandoned
+
+Laminas CLI has been released - please use that instead: https://github.com/laminas/laminas-cli
+
 ### Introduction
 
 This very small component provides a couple of PSR-11 factories and opinionated configuration to get Symfony’s CLI tooling bootstrapped quickly in a Mezzio application _(It might also play nice with Laminas MVC but I don’t really use that anymore…)_.
