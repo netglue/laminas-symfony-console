@@ -27,6 +27,10 @@
         "phpunit/phpunit": "^9.0",
         "roave/security-advisories": "dev-master"
     },
+    "abandoned": "laminas/laminas-cli",
+    "suggest": {
+        "laminas/laminas-cli": "This package is abandoned, use laminas-cli instead"
+    },
     "autoload": {
         "psr-4": {
             "Netglue\\Console\\": "src"
